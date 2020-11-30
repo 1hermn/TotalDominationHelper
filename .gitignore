@@ -1,4 +1,4 @@
 /node_modules
-/db/db.simple.json
+/db/db.json
 /requests/*
 !/requests/todo.md
