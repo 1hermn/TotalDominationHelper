@@ -1,0 +1,76 @@
+{
+  "pp72739242": {
+    "vk_id": "188241464",
+    "actions": [
+      {
+        "type": "buy_1606757298890",
+        "id": 1,
+        "time_start": 1606757298890,
+        "sign": "2428a78301e5be5f20dc8e5c16ec86745a662379e08f983844f0b29745e84045"
+      },
+      {
+        "type": "buy_1606757338749",
+        "id": 1,
+        "time_start": 1606757338749,
+        "sign": "13436281c3285e9747054ed6da45d3bc56f38d1fe76f32cf451d18d4e90e76de",
+        "time_end": 1606757339000
+      },
+      {
+        "type": "buy_1606757563933",
+        "id": 1058,
+        "time_start": 1606757563933,
+        "sign": "9483e4ac22c632aa95f5b42e9701c41bca79ebd52d472ffeeb593ae5c0ef34cf",
+        "time_end": 1606788718000
+      },
+      {
+        "type": "buy_1606757599980",
+        "id": 106,
+        "time_start": 1606757599980,
+        "sign": "cfbdde42127948ba377eff8bef4dd3e00b75697bda62b8b35e6dc5008f3ecde7",
+        "time_end": 1606758777000
+      },
+      {
+        "type": "improveskill_1606764034865",
+        "id": 2001,
+        "time_start": 1606764034865,
+        "sign": "be120a0f4a308549a644f8695ff5b092ed7dde0041ded28a91b6b8c33a0cfb06",
+        "time_end": 1606771235000
+      },
+      {
+        "type": "buy_1606765067603",
+        "id": 1,
+        "time_start": 1606765067603,
+        "sign": "ef8282bcbde77726572035889eec8edc9c382e7efcf0d374c7ee95b0950a7d6d",
+        "time_end": 1606765068000
+      },
+      {
+        "type": "buy_1606766606930",
+        "id": 1,
+        "time_start": 1606766606930,
+        "sign": "a81a4d87f26eb841f365c3949985e8084ae611baa8d88108ecedd8ad77274223",
+        "time_end": 1606766783000
+      },
+      {
+        "type": "buy_1606766781685",
+        "id": 1,
+        "time_start": 1606766781685,
+        "sign": "dc4690edefdbec1410f1bf16f5742b7c8d40379e6469a3d900b0dc2b518a5cf9",
+        "time_end": 1606766782000
+      },
+      {
+        "type": "buy_1606766801217",
+        "id": 1,
+        "time_start": 1606766801217,
+        "sign": "1506f36e07a673675474a967cb4d91af0219370b63377e254c5c5b5706ff1d5c",
+        "time_end": 1606766802000
+      },
+      {
+        "type": "powderinventoryitem_1606766848960",
+        "id": 9,
+        "time_start": 1606766848960,
+        "sign": "53025a7aefb89981a46e6dd553b62bcc91e7a092e57d00ebc7e6c1365189e847",
+        "time_end": 1606767270000
+      }
+    ]
+  }
+}
