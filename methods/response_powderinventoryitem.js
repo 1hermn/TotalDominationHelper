@@ -4,7 +4,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
 	fs.writeFileSync(path, new_file, 'utf8')
 	var response_JSON = require("D:/TotalDominationHelper/"+path)//в будущем упростить
 	var options = {
-  uri: config.url,
+  uri: config.url+"/pwd",
   method: 'POST',
   json: {
     "time_end": response_JSON.o.t,

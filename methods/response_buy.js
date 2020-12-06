@@ -5,7 +5,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
 	
 	var response_JSON = require("D:/TotalDominationHelper/"+path)//в будущем упростить
 	var options = {
-  uri: config.url,
+  uri: config.url+"/buy",
   method: 'POST',
   json: {
     "time_end": response_JSON.o.f,
@@ -13,10 +13,11 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
     "sign": sign
   }
 };
-
+//request не отправляет POST, гугл
 request(options, function (error, response, body) {
+ 
   if (!error && response.statusCode == 200) {
-    console.log(body.id)
+   
   }
 });
 	  tools.log("Постройка здания/юнита(ов) будет закончена в:", tools.convertTimestamp(response_JSON.o.f))

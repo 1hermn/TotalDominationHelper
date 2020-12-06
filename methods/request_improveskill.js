@@ -5,7 +5,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
   tools.log("Начало улучшения в :", tools.convertTimestamp(request_JSON.t))
   tools.log("Ячейка:", request_JSON.o.i)
   var options = {
-  uri: config.url,
+  uri: config.url+"/imp",
   method: 'POST',
   json: {
     "type": "improveskill",

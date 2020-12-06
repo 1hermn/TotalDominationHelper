@@ -3,7 +3,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
   //также необходимо записывать i(судя по всему - это индекс постройки).
   //поможет, если вдруг будет применение бустов
   var options = {
-  uri: config.url,
+  uri: config.url+"/buy",
   method: 'POST',
   json: {
     "type": "buy",
@@ -16,8 +16,9 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
 };
 
 request(options, function (error, response, body) {
+  
   if (!error && response.statusCode == 200) {
-    console.log(body.id)
+    
   }
 });
   tools.log(`Здание/Юниты (уровень ${request_JSON.o.o.c.l}) начинают строится в:`, tools.convertTimestamp(request_JSON.t))

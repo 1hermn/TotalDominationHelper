@@ -1,7 +1,7 @@
 exports.run = (method, sign, path, fs, tools, id, request, config) => {
 	var request_JSON = require("D:/TotalDominationHelper/"+path)
 	var options = {
-  uri: config.url,
+  uri: config.url+"/upgr",
   method: 'POST',
   json: {
     "type": "improveskill",
