@@ -3,3 +3,6 @@
 /requests/*
 !/requests/todo.md
 /SERVER/node_modules
+/SERVER/VK/node_modules
+/Prod
+/SERVER/VK/config.json
