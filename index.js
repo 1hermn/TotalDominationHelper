@@ -2,10 +2,8 @@ const fs = require('fs-extra');
 const chokidar = require('chokidar');
 const Enmap = require("enmap");
 const tools = require('./tools/tools.js')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('./db/db.json')
-const low = require('lowdb')
-const db = low(adapter)
+const request = require('request')
+const config = require("./config.json")
 
 tools.log("[START]","Бот запущен успешно")
 
@@ -43,14 +41,16 @@ chokidar.watch('./requests/').on('all', (event, path) => {
   		if(file.split("_")[0] == "request"){
   			//Вывод запроса/ответа, метода, кода.
   			if (!method_cmd) return;
-			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, db);//TODO:
+        // переписать, убрать db, когда будет всё закончено. 
+        // добавить request
+			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, request, config);//TODO:
 			/*
 			В файле метода request_buy есть заготовка для того, чтобы удалить символы после ! и сам этот символ
 			*/
   		}
   		if(file.split("_")[0] == "response"){
   			if (!method_cmd) return;
-			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, db);
+			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, request, config);
   		}
   	}catch(err){
   		

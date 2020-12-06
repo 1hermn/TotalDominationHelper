@@ -1,4 +1,4 @@
-exports.run = (method, sign, path, fs, tools, id, db) => {
+exports.run = (method, sign, path, fs, tools, id, request, config) => {
 	var file = fs.readFileSync(path, 'utf8')
 	var new_file = file.substr(0, file.indexOf('!'))
 	fs.writeFileSync(path, new_file, 'utf8')

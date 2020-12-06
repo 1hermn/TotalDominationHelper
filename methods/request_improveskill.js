@@ -1,4 +1,4 @@
-exports.run = (method, sign, path, fs, tools, id, db) => {
+exports.run = (method, sign, path, fs, tools, id, request, config) => {
   var request = require("D:/TotalDominationHelper/"+path)//в будущем упростить
   //тут действия
   //значит выводить постройку либо кодом, либо по базе (json/lowdb, база должна быть на сервере), построек использовать название постройки

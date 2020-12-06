@@ -2,3 +2,4 @@
 /db/db.json
 /requests/*
 !/requests/todo.md
+/API/node_modules
