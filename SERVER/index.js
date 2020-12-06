@@ -37,14 +37,27 @@ server.post('/imp', function(req, res){
 	}
 
 		if(req.body.time_end === undefined){
-			db.get(`${req.body.id_p}.actions`)
+			if(!db.get(`${req.body.id_p}.actions`).find({ sign: req.body.sign }).value()){
+				db.get(`${req.body.id_p}.actions`)
   			  .push({ type: `improveskill_${req.body.time_start}`, id: req.body.id, time_start: req.body.time_start, sign: req.body.sign, time_end: 0})
   			  .write()
+			}else {
+			db.get(`${req.body.id_p}.actions`)
+			  .find({ sign: req.body.sign })
+  			  .assign({ id: req.body.id, time_start: req.body.time_start, sign: req.body.sign})
+  			  .write()
+  			}
 		}if(req.body.time_end != undefined){
+			if(!db.get(`${req.body.id_p}.actions`).find({ sign: req.body.sign }).value()){
+				db.get(`${req.body.id_p}.actions`)
+				.push({ type: `powderinventoryitem`, id: 0, time_start: 0, sign: req.body.sign, time_end: req.body.time_end})
+  			  	.write()
+			}else {
 			db.get(`${req.body.id_p}.actions`)
 			  .find({ sign: req.body.sign })
 			  .assign({time_end: req.body.time_end})
 			  .write()
+			  }
 
 }
 	res.send({"message" : "Новое событие записано в базу данных"});
@@ -55,14 +68,27 @@ server.post('/powder', function(req, res){
 		.write()
 	}
 		if(req.body.time_end === undefined){
-			db.get(`${req.body.id_p}.actions`)
+			if(!db.get(`${req.body.id_p}.actions`).find({ sign: req.body.sign }).value()){
+				db.get(`${req.body.id_p}.actions`)
   			  .push({ type: `powderinventoryitem_${req.body.time_start}`, id: req.body.id, time_start: req.body.time_start, sign: req.body.sign, time_end: 0})
   			  .write()
+			}else {
+			db.get(`${req.body.id_p}.actions`)
+			  .find({ sign: req.body.sign })
+  			  .assign({ id: req.body.id, time_start: req.body.time_start, sign: req.body.sign})
+  			  .write()
+  			}
 		}if(req.body.time_end != undefined){
+			if(!db.get(`${req.body.id_p}.actions`).find({ sign: req.body.sign }).value()){
+				db.get(`${req.body.id_p}.actions`)
+				.push({ type: `powderinventoryitem`, id: 0, time_start: 0, sign: req.body.sign, time_end: req.body.time_end})
+  			  	.write()
+			}else {
 			db.get(`${req.body.id_p}.actions`)
 			  .find({ sign: req.body.sign })
 			  .assign({time_end: req.body.time_end})
-			  .write()	
+			  .write()
+			  }	
 
 }
 	res.send({"message" : "Новое событие записано в базу данных"});
@@ -73,14 +99,28 @@ server.post('/upgr', function(req, res){
 		.write()
 	}
 		if(req.body.time_end === undefined){
-			db.get(`${req.body.id_p}.actions`)
+			if(!db.get(`${req.body.id_p}.actions`).find({ sign: req.body.sign }).value()){
+				db.get(`${req.body.id_p}.actions`)
               .push({ type: `upgradeinventoryitem_${req.body.time_start}`, id: req.body.id, time_start: req.body.time_start, sign: req.body.sign, time_end: 0})
               .write()
+			}else  {
+				db.get(`${req.body.id_p}.actions`)
+			  .find({ sign: req.body.sign })
+  			  .assign({ id: req.body.id, time_start: req.body.time_start, sign: req.body.sign})
+  			  .write()
+			}
+			
 		}if(req.body.time_end != undefined){
+			if(!db.get(`${req.body.id_p}.actions`).find({ sign: req.body.sign }).value()){
+				db.get(`${req.body.id_p}.actions`)
+				.push({ type: `upgradeinventoryitem`, id: 0, time_start: 0, sign: req.body.sign, time_end: req.body.time_end})
+  			  	.write()
+			}else {
 			db.get(`${req.body.id_p}.actions`)
 			  .find({ sign: req.body.sign })
 			  .assign({time_end: req.body.time_end})
-			  .write()	
+			  .write()
+			  }		
 
 }
 	res.send({"message" : "Новое событие записано в базу данных"});

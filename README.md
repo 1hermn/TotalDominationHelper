@@ -14,7 +14,7 @@
 - Клонируйте этот репозиторий и удалите папку SERVER, она вам не понадобиться
 - Скачайте и установите [Fiddler](https://www.telerik.com/download/fiddler)
 	- После установки откройте Fiddler и перейдите в FiddlerScripts
-	- Найдите строку, которая начинает с```
+	- Найдите строку, которая начинается с```
 	static function OnBeforeResponse(oSession: Session)```
 	- Замените эту функцию на
 	```javascript
@@ -37,5 +37,6 @@
 	"url" : "[ДОПИСАТЬ URL]"
 }
 ```
-
 - После этого можете запускать ```start.bat```
+# TODO
+[TODO](./requests/todo.md)
