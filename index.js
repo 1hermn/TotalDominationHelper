@@ -44,9 +44,6 @@ chokidar.watch('./requests/').on('all', (event, path) => {
         // переписать, убрать db, когда будет всё закончено. 
         // добавить request
 			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, request, config);//TODO:
-			/*
-			В файле метода request_buy есть заготовка для того, чтобы удалить символы после ! и сам этот символ
-			*/
   		}
   		if(file.split("_")[0] == "response"){
   			if (!method_cmd) return;

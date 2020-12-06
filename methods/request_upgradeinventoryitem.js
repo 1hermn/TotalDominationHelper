@@ -1,8 +1,23 @@
 exports.run = (method, sign, path, fs, tools, id, request, config) => {
-	var request = require("D:/TotalDominationHelper/"+path)
-	 db.get(`${id}.actions`)
-  .push({ type: `upgradeinventoryitem_${request.t}`, id: request.o.i, time_start: request.t, sign: sign, time_end: 0})
-  .write()
-  tools.log("Улучшение предмета начато в:", tools.convertTimestamp(request.t))
+	var request_JSON = require("D:/TotalDominationHelper/"+path)
+	var options = {
+  uri: config.url,
+  method: 'POST',
+  json: {
+    "type": "improveskill",
+    "id": request_JSON.o.i,
+    "time_start": request_JSON.t,
+    "sign": sign,
+    "i": 0,
+    "id_p": id
+  }
+};
+
+request(options, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body.id)
+  }
+});
+  tools.log("Улучшение предмета начато в:", tools.convertTimestamp(request_JSON.t))
 	fs.removeSync(path, { recursive: true });
 };
