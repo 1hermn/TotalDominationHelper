@@ -22,6 +22,7 @@ vk.updates.on('message_new', async (context, next) => {
 	context.send(`Ваш id : ${id}`)
 	//добавление в бд
 	//путь до бд должен быть создан в env перед запуском бота вк
+	//
 })
 
 vk.updates.start().catch(console.error);
