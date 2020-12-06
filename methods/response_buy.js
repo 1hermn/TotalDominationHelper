@@ -8,6 +8,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
   uri: config.url+"/buy",
   method: 'POST',
   json: {
+    "type":method,
     "time_end": response_JSON.o.f,
     "id_p": id,
     "sign": sign

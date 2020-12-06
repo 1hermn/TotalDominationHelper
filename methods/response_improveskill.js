@@ -7,6 +7,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
   uri: config.url+"/imp",
   method: 'POST',
   json: {
+    "type":method,
     "time_end": response_JSON.o.s.c.f,
     "id_p": id,
     "sign": sign

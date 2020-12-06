@@ -7,15 +7,6 @@ const config = require("./config.json")
 
 tools.log("[START]","Бот запущен успешно")
 
-function IfFileCreate(filename){
-		fs.readFile('./requests/' + filename, "utf8", (error, data) => {
-			if(error) throw error
-			let index = data.indexOf('}');
-		//вот тут действия над файлом
-		let log = "FILE" + filename + "; { in " + index;
-			return log
-	})
-}
 
 methods = new Enmap();
 

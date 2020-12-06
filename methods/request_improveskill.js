@@ -8,7 +8,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
   uri: config.url+"/imp",
   method: 'POST',
   json: {
-    "type": "improveskill",
+    "type": method,
     "id": request_JSON.o.i,
     "time_start": request_JSON.t,
     "sign": sign,
