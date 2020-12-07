@@ -1,22 +1,38 @@
 var restify = require('restify');
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('./db/db.json')
-const low = require('lowdb')
-const db = low(adapter)
 const child_process = require('child_process');
+const mysql = require('mysql')
+const config = require('./config.json')
 
+process.env['PATHTOCONFIG'] = __dirname + "/config.json"
 
 var server = restify.createServer({
   name: 'Total Domination Helper',
   version: '0.9.0'
 });
-process.env['PATHTODB'] = __dirname + '/db/db.json';
+const options = {
+  user: config.login,
+  password: config.pass,
+  database: config.db_name,
+  host: config.host,
+  port: config.port
+}
 
-const start = child_process.fork("./VK/index.js")
+const connection = mysql.createConnection(options)
+
+connection.connect(err => {
+  if (err) {
+    console.error('An error occurred while connecting to the DB')
+    throw err
+  }else {
+  	console.log("Подключено успешно")
+  }
+})
+
+//const start = child_process.fork("./VK/index.js")
 
 
 function AddToLowDB(body){
-	db.read()
+/*	db.read()
 	if(!db.has(`${body.id_p}`).value()){
 		db.set(`${body.id_p}`, {"vk_id" : 0, "actions": []})
 		  .write()
@@ -44,7 +60,7 @@ function AddToLowDB(body){
 			  .assign({time_end: body.time_end})
 			  .write()
 			  }
-}
+}*/
 }
 
 server.use(restify.plugins.acceptParser(server.acceptable));
