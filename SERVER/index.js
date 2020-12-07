@@ -3,11 +3,17 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('./db/db.json')
 const low = require('lowdb')
 const db = low(adapter)
+const child_process = require('child_process');
+
 
 var server = restify.createServer({
-  name: 'Hello World!',
-  version: '1.0.0'
+  name: 'Total Domination Helper',
+  version: '0.9.0'
 });
+process.env['PATHTODB'] = __dirname + '/db/db.json';
+
+const start = child_process.fork("./VK/index.js")
+
 
 function AddToLowDB(body){
 	if(!db.has(`${body.id_p}.actions`).value()){
