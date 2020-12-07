@@ -24,20 +24,20 @@ hearManager.hear('/start', async (context) => {
 
 vk.updates.on('message_new', async (context, next) => {
 	if(context.text.startsWith('/myid')){
+		db.read()
 		var id = context.text.split(" ")[1];
 		context.send("Попытка добавить в базу данных...")
 		if(db.has(`${id}`).value() && db.get(`${id}.vk_id`).value() == 0){
-			console.log(db.get(`${id}`).assign({vk_id: `${context.peerId}`}).write())
+			console.log(db.has(`${id}`).value())
+			console.log(db.get(`${id}.vk_id`).value())
+			fun = await db.get(`${id}`).assign({vk_id: `${context.peerId}`}).write()
 			context.send("Добавлено")
 		}else {
 			context.send("Ошибка добавления id в базу, возможно, вы ввели его не правильно или ни одной записи с этим id нет в базе! Прочитайте инструкцию и попробуйте снова")
 		}
 	}
-	
-	
-	//добавление в бд
-	//путь до бд должен быть создан в env перед запуском бота вк
-	//
 })
+
+
 
 vk.updates.start().catch(console.error);

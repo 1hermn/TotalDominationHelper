@@ -16,7 +16,8 @@ const start = child_process.fork("./VK/index.js")
 
 
 function AddToLowDB(body){
-	if(!db.has(`${body.id_p}.actions`).value()){
+	db.read()
+	if(!db.has(`${body.id_p}`).value()){
 		db.set(`${body.id_p}`, {"vk_id" : 0, "actions": []})
 		  .write()
 	}
