@@ -38,6 +38,12 @@ vk.updates.on('message_new', async (context, next) => {
 	}
 })
 
+function data(){
+	db.read()
+	var data = db.value()
+	return data
+}
 
+console.log(data())
 
 vk.updates.start().catch(console.error);
