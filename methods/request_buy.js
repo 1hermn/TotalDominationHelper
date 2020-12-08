@@ -18,7 +18,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
 request(options, function (error, response, body) {
   
   if (!error && response.statusCode == 200) {
-    
+    console.log(response)
   }
 });
   tools.log(`Здание/Юниты (уровень ${request_JSON.o.o.c.l}) начинают строится в:`, tools.convertTimestamp(request_JSON.t))

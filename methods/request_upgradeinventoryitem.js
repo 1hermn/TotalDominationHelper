@@ -15,7 +15,7 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
 
 request(options, function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    console.log(body.id)
+    console.log(response)
   }
 });
   tools.log("Улучшение предмета начато в:", tools.convertTimestamp(request_JSON.t))
