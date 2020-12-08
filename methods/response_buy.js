@@ -14,11 +14,13 @@ exports.run = (method, sign, path, fs, tools, id, request, config) => {
     "sign": sign
   }
 };
-//request не отправляет POST, гугл
+
 request(options, function (error, response, body) {
- 
+  
   if (!error && response.statusCode == 200) {
-   console.log(response)
+    console.log(response.body)
+  }else {
+    console.log(error)
   }
 });
 	  tools.log("Постройка здания/юнита(ов) будет закончена в:", tools.convertTimestamp(response_JSON.o.f))

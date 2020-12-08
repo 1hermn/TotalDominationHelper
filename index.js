@@ -8,6 +8,7 @@ const config = require("./config.json")
 tools.log("[START]","Бот запущен успешно")
 
 
+
 methods = new Enmap();
 
 fs.readdir("./methods/", (err, files) => {
