@@ -16,7 +16,10 @@ db.defaults({
 }).write()
 
 
-tools.log("[START]","Бот запущен успешно")
+tools.log("[START\\MAIN]","Бот запущен успешно")
+tools.log("[START\\HANDLER]", "Обработчик запущен")
+
+const start = child_process.fork("./handler.js")
 
 methods = new Enmap();
 
