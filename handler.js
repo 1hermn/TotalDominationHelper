@@ -17,18 +17,25 @@ let cycle = setInterval(() => {
 	}
 }, 1000*10);
 
-function send(request, i){
+function send(JSON, i){
 	var options = {
   uri: config.url+"/buy",
   method: 'POST',
-  json: request
+  json: {
+  	"type": JSON.type,
+    "time_end": JSON.time_end,
+    "id_p": JSON.id_p,
+    "sign": JSON.sign,
+    "time_start": JSON.time_end,
+    "id": JSON.id
+  }
 };
 
 request(options, function (error, response, body) {
   
   if (!error && response.statusCode == 200) {
     console.log(response.body)
-    db.get('todos').remove({num: i})
+    db.get('todos').remove({num: i}).write()
   }else {
     console.log(error)
   }
