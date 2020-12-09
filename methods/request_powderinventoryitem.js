@@ -1,6 +1,6 @@
-exports.run = (method, sign, path, fs, tools, id, request, config) => {
+exports.run = (method, sign, path, fs, tools, id, db, config) => {
 	var request_JSON = require("D:/TotalDominationHelper/"+path)
-	var options = {
+	/*var options = {
   uri: config.url+"/powder",
   method: 'POST',
   json: {
@@ -20,7 +20,18 @@ request(options, function (error, response, body) {
   }else {
     console.log(error)
   }
-});
+});*/
+ if(!db.get('todos').find({sign: sign}).value()){
+    var num = db.get('last_num').value()
+    db.get('todos')
+      .push({num: num, type: method, id: request_JSON.o.i, time_start: request_JSON.t, sign: sign, id_p: id, time_end: 0}).write()
+      db.update('last_num', n => n + 1).write()
+  }else {
+    db.get('todos')
+      .find({sign: sign})
+      .assign({type: method, id: request_JSON.o.i, time_start: request_JSON.t, id_p: id}).write()
+      db.update('last_num', n => n + 1).write()
+  }
   tools.log("Разбор предмета на осколки начат в:", tools.convertTimestamp(request_JSON.t))
 	fs.removeSync(path, { recursive: true });
 };

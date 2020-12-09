@@ -2,12 +2,21 @@ const fs = require('fs-extra');
 const chokidar = require('chokidar');
 const Enmap = require("enmap");
 const tools = require('./tools/tools.js')
-const request = require('request')
 const config = require("./config.json")
+const low = require('lowdb')
+const child_process = require('child_process');
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('./db/db.json')
+const db = low(adapter)
+
+db.defaults({ 
+	todos: [],
+	last_num: 0 
+}).write()
+
 
 tools.log("[START]","Бот запущен успешно")
-
-
 
 methods = new Enmap();
 
@@ -35,11 +44,11 @@ chokidar.watch('./requests/').on('all', (event, path) => {
   			if (!method_cmd) return;
         // переписать, убрать db, когда будет всё закончено. 
         // добавить request
-			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, request, config);//TODO:
+			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, db, config);//TODO:
   		}
   		if(file.split("_")[0] == "response"){
   			if (!method_cmd) return;
-			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, request, config);
+			method_cmd.run(file.split(".")[1], sign, path, fs, tools, id, db, config);
   		}
   	}catch(err){
   		
