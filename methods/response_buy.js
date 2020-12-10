@@ -23,10 +23,11 @@ request(options, function (error, response, body) {
     console.log(error)
   }
 });*/
+db.read()
  if(!db.get('todos').find({sign: sign}).value()){
     var num = db.get('last_num').value()
     db.get('todos')
-      .push({num: num, type: method, id: 0, time_start: 0, sign: sign, id_p: id, time_end: response_JSON.o.f}).write()
+      .push({num: num, type: method, id: 0, time_start: 0, sign: sign, id_p: id, time_end: response_JSON.o.f, send: 0, send: 0}).write()
       db.update('last_num', n => n + 1).write()
   }else {
     db.get('todos')

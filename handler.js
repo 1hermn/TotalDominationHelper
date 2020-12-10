@@ -7,12 +7,18 @@ const adapter = new FileSync('./db/db.json')
 const db = low(adapter)
 const tools = require('./tools/tools.js')
 
-let cycle = setInterval(() => {
-	tools.log("[HANDLER]", "Обработка буферного хранилища запросов")
-	for(i = db.get('last_num').value(); i >= 0; i--){
-		db.read()
+
+const UpdateDb = new Promise((resolve, reject) => {
+  db.read()
+  resolve('Буфер данных обновлен')
+});
+
+let cycle = setInterval(async () => {
+	tools.log("[HANDLER]", "Начало обработки хранилища запросов")
+	for(i = db.read().get('last_num').value(); i >= 0; i--){
+		let res = await UpdateDb;
 		let value = db.get('todos').find({num: i}).value()
-		if(value != undefined){
+		if(value != undefined && value.send == 0){
 			send(value, i)
 		}
 	}
@@ -32,7 +38,7 @@ function send(JSON, i){
   }
 };
 try {
-request(options, function (error, response, body) {
+request(options, async function (error, response, body) {
   
   if (!error && response.statusCode == 200) {
     tools.log("[SEND\\HANDLER]", response.body.message)
