@@ -23,6 +23,7 @@ request(options, function (error, response, body) {
     console.log(error)
   }
 });*/
+//добавить передачу уровня.
 db.read()
   if(!db.get('todos').find({sign: sign}).value()){
     var num = db.get('last_num').value()

@@ -34,7 +34,7 @@
  - Создайте в корне проекта файл config.json с содержимым
  ```javascript 
  {
-	"url" : "totaldomhelper.dokaplus.by"
+	"url" : "http://totaldomhelper.dokaplus.by"
 }
 ```
 - Запустите ```start.bat```, запустите игру (клиент, либо в браузере)
